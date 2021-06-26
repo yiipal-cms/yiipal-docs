@@ -1,0 +1,29 @@
+{
+  "name": "yiipal-docs",
+  "version": "1.0.0",
+  "description": "Docs for Yiipal CMS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docsify": "docsify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yiipal-cms/yiipal-docs.git"
+  },
+  "keywords": [
+    "yiipal",
+    "yiipal-cms",
+    "yii2",
+    "framework"
+  ],
+  "author": "Oscaner Miao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yiipal-cms/yiipal-docs/issues"
+  },
+  "homepage": "https://github.com/yiipal-cms/yiipal-docs#readme",
+  "devDependencies": {
+    "docsify-cli": "^4.4.3"
+  }
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Yiipal - Docs</title>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' />
+  <meta name='description' content='Description'>
+  <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <!-- <link rel='shortcut icon' href='https://www.oscaner.com/favicon.ico'> -->
+  <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css'>
+  <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css'>
+  <link rel='stylesheet' href='//cdn.jsdelivr.net/npm/md5@2/dist/md5.min.js'>
+  <style type='text/css'>
+    .markdown-section {
+      max-width: 1000px;
+    }
+  </style>
+</head>
+<body>
+  <div id='app'>Please waiting...</div>
+  <script>
+    window.$docsify = {
+      // routerMode: 'history',
+
+      // 当路线改变时，滚动到屏幕的顶部。
+      auto2top: true,
+
+      // 激活封面功能。如果为true，则会从中加载_coverpage.md。
+      coverpage: true,
+
+      // 执行页面上的脚本。只解析第一个脚本标记（演示）。如果存在Vue，则默认开启。
+      executeScript: true,
+
+      // _sidebar.md如果为真，则从_sidebar.md文件加载边栏，否则从指定的路径加载。
+      loadSidebar: true,
+
+      // _navbar.md如果为真，则从_navbar.md文件加载navbar ，否则从指定的路径加载。
+      loadNavbar: true,
+
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/.*/_navbar.md': '/_navbar.md'
+      },
+
+      // Navbar将在小屏幕上与侧边栏合并。
+      // mergeNavbar: true,
+
+      // 最大的内容表级别。
+      maxLevel: 4,
+
+      subMaxLevel: 2,
+
+      // 在自定义边栏中添加目录（TOC）
+      // subMaxLevel: 2,
+
+      ga: '',
+
+      name: 'Yiipal',
+
+      labels: ['yiipal', 'yiipal-cms', 'yii2', 'framework'],
+
+      repo: 'https://github.com/yiipal-cms/yiipal',
+
+      search: {
+        noData: {
+          '/de-de/': 'Keine Ergebnisse!',
+          '/zh-cn/': '没有结果!',
+          '/': 'No results!'
+        },
+        paths: 'auto',
+        placeholder: {
+          '/de-de/': 'Suche',
+          '/zh-cn/': '搜索',
+          '/': 'Search'
+        }
+      },
+
+      formatUpdated: '{YYYY}-{MM}-{DD} {HH}:{mm}',
+
+      plugins: [
+        function(hook, vm) {
+          hook.beforeEach(function (html) {
+            var url = 'https://github.com/yiipal-cms/yiipal-docs/' + vm.route.file
+            var editHtml = '[修改文档](' + url + ')\n'
+
+            return html
+            + '\n----\n'
+            + '<center>'
+            + 'Last update: {docsify-updated} '
+            // + editHtml
+            + '</center>'
+            + '<div id=\'gitalk-container\'></div>'
+          });
+
+          hook.doneEach(function() {
+            // 每次路由切换时数据全部加载完成后调用，没有参数。
+            var gitalk = new Gitalk({
+                clientID: '5e54fb98f075b953b1b7',
+                clientSecret: 'aa1cc2ac538a338dee112bcfbb8a2db154727e2c',
+                repo: 'yiipal-docs',
+                owner: 'yiipal-cms',
+                admin: ['Oscaner Miao'],
+
+                id: MD5(decodeURI(window.location.hash.split('?')[0])),
+                // facebook-like distraction free mode
+                distractionFreeMode: true
+            });
+            gitalk.render('gitalk-container');
+          });
+        }
+      ],
+    }
+  </script>
+
+  <!-- Docsify v4 -->
+  <script src="//cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/ga.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-markdown.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-nginx.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/prismjs@1/components/prism-php.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+</body>
+</html>
